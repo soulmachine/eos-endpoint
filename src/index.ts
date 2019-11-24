@@ -103,7 +103,7 @@ async function getBpApiEndpoints(url: string): Promise<string[]> {
     if (
       response.status !== 200 ||
       response.statusText !== 'OK' ||
-      response.headers['content-type'] !== 'application/json'
+      !(response.headers['content-type'] as string).startsWith('application/json')
     ) {
       return [];
     }
