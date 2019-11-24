@@ -46,15 +46,26 @@ const BLOCK_NUM = 91463041;
 
 const BP_SEEDS = [
   'https://mainnet.meet.one',
+  'https://eos.infstones.io',
+  'https://eos.eoscafeblock.com',
+  'http://peer1.eoshuobipool.com:8181',
   'https://eos.newdex.one',
   'https://node.betdice.one',
   'https://api.redpacketeos.com',
   'https://api.eoseoul.io',
   'https://eos.infstones.io',
+  'https://api.eossweden.org',
+  'https://api-mainnet.starteos.io',
+  'https://mainnet.eoscannon.io',
+  'https://api.eossweden.org',
+  'https://api.main.alohaeos.com',
   'https://bp.whaleex.com',
   'https://api.helloeos.com.cn',
-  'https://bp.cryptolions.io',
   'https://api.eosn.io',
+  'https://api.zbeos.com',
+  'https://api.eosrio.io',
+  'https://api.eoslaomao.com',
+  'https://api.eosbeijing.one',
 ];
 
 async function getProducers(): Promise<ProducerInfo[]> {
