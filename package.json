@@ -1,0 +1,55 @@
+{
+  "name": "eos-endpoint",
+  "version": "0.0.5",
+  "description": "Get a list of valid EOS API endpoints.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "source": "src/index.ts",
+  "bin": "dist/cli.js",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "start": "node ./dist/cli.js",
+    "lint": "eslint . --ext '.js,.jsx,.ts,.tsx,.md'",
+    "prettier": "prettier -c --write '**/*'",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/soulmachine/eos-endpoint.git"
+  },
+  "keywords": [
+    "typescript",
+    "CLI"
+  ],
+  "engines": {
+    "node": ">=10"
+  },
+  "author": "soulmachine",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/soulmachine/eos-endpoint/issues"
+  },
+  "homepage": "https://github.com/soulmachine/eos-endpoint#readme",
+  "devDependencies": {
+    "@types/node": "^12.12.7",
+    "@types/node-fetch": "^2.5.4",
+    "@types/text-encoding": "0.0.35",
+    "@typescript-eslint/eslint-plugin": "^2.7.0",
+    "@typescript-eslint/parser": "^2.7.0",
+    "eslint": "^6.6.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-config-prettier": "^6.5.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jest": "^23.0.4",
+    "eslint-plugin-markdown": "^1.0.1",
+    "eslint-plugin-prettier": "^3.1.1",
+    "prettier": "^1.19.1",
+    "typescript": "^3.7.2"
+  },
+  "dependencies": {
+    "assert": "^2.0.0",
+    "axios": "^0.19.0",
+    "eosjs": "^20.0.0",
+    "node-fetch": "^2.6.0"
+  }
+}
