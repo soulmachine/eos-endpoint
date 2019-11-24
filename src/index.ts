@@ -69,7 +69,7 @@ async function getProducers(): Promise<ProducerInfo[]> {
       // console.error(e);
     }
   }
-  throw new Error(`getProducers() failed after tring all BP seeds`);
+  throw new Error(`getProducers() failed after trying all BP seeds`);
 }
 
 /**

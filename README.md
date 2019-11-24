@@ -1,6 +1,6 @@
 # eos-endpoint
 
-Get a list of valid EOS API endpoints.
+Retreive a list of valid EOS API endpoints.
 
 [![NPM](https://nodei.co/npm/eos-endpoint.png?downloads=true&downloadRank=true)](https://nodei.co/npm/eos-endpoint/)
 
