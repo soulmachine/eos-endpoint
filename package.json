@@ -1,6 +1,6 @@
 {
   "name": "eos-endpoint",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Retrieve a list of valid EOS API endpoints.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
