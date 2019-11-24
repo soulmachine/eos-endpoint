@@ -129,8 +129,8 @@ async function check(url: string): Promise<number> {
 
     const transaction = await rpc.history_get_transaction(TEST_TRANSACTION_ID, BLOCK_NUM);
     const endTime = Date.now();
-    const elapsed = endTime - startTime;
-    return transaction.id || transaction.transaction_id ? elapsed : 0;
+    const latency = Math.round((endTime - startTime) / 3);
+    return transaction.id || transaction.transaction_id ? latency : 0;
   } catch (e) {
     // console.error(url);
     // console.error(e);

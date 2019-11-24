@@ -3,6 +3,7 @@
 import getApiEndpoints from './index';
 
 (async () => {
+  console.info('Retrieving a list of valid EOS API endpoints...\n\n');
   const endpoints = await getApiEndpoints();
   console.info(endpoints);
 })();

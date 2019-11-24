@@ -1,7 +1,7 @@
 {
   "name": "eos-endpoint",
-  "version": "0.0.5",
-  "description": "Get a list of valid EOS API endpoints.",
+  "version": "0.0.9",
+  "description": "Retrieve a list of valid EOS API endpoints.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "source": "src/index.ts",
@@ -18,8 +18,9 @@
     "url": "git+https://github.com/soulmachine/eos-endpoint.git"
   },
   "keywords": [
-    "typescript",
-    "CLI"
+    "EOS",
+    "eosio",
+    "blockchain"
   ],
   "engines": {
     "node": ">=10"
@@ -47,7 +48,6 @@
     "typescript": "^3.7.2"
   },
   "dependencies": {
-    "assert": "^2.0.0",
     "axios": "^0.19.0",
     "eosjs": "^20.0.0",
     "node-fetch": "^2.6.0"

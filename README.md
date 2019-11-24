@@ -5,7 +5,7 @@ Get a list of valid EOS API endpoints.
 ## How to use
 
 ```javascript
-const getApiEndpoints = require('eos-endpoint'); // eslint-disable-line import/no-unresolved
+const getApiEndpoints = require('eos-endpoint').default; // eslint-disable-line import/no-unresolved
 
 (async () => {
   const endpoints = await getApiEndpoints();
@@ -16,7 +16,7 @@ const getApiEndpoints = require('eos-endpoint'); // eslint-disable-line import/n
 ## Quickstart
 
 ```bash
-npx eos-endpoints
+npx eos-endpoint
 ```
 
 ## References
