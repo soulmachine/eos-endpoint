@@ -11,7 +11,7 @@ const getApiEndpoints = require('eos-endpoint').default; // eslint-disable-line 
 
 (async () => {
   const endpoints = await getApiEndpoints();
-  console.info(endpoints);
+  console.info(endpoints); // eslint-disable-line no-console
 })();
 ```
 

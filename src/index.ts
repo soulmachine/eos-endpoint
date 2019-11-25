@@ -1,8 +1,6 @@
 /* eslint-disable camelcase */
 import axios from 'axios';
 import https from 'https';
-import { JsonRpc } from 'eosjs';
-import fetch from 'node-fetch'; // node only; not needed in browsers
 
 interface ProducerInfo {
   owner: string;
@@ -45,38 +43,52 @@ const TEST_TRANSACTION_ID = '596e905f4af9e212aa4683fa209bfb32d1339e869a16b9c0687
 const BLOCK_NUM = 91463041;
 
 const BP_SEEDS = [
-  'https://mainnet.meet.one',
   'https://eos.infstones.io',
   'https://eos.eoscafeblock.com',
   'http://peer1.eoshuobipool.com:8181',
-  'https://eos.newdex.one',
   'https://node.betdice.one',
   'https://api.redpacketeos.com',
-  'https://api.eoseoul.io',
   'https://eos.infstones.io',
-  'https://api.eossweden.org',
   'https://api-mainnet.starteos.io',
   'https://mainnet.eoscannon.io',
-  'https://api.eossweden.org',
   'https://api.main.alohaeos.com',
   'https://bp.whaleex.com',
-  'https://api.helloeos.com.cn',
-  'https://api.eosn.io',
   'https://api.zbeos.com',
   'https://api.eosrio.io',
   'https://api.eoslaomao.com',
-  'https://api.eosbeijing.one',
 ];
+
+async function post(url: string, data: { [key: string]: any }): Promise<any> {
+  const agent = new https.Agent({
+    rejectUnauthorized: false,
+  });
+  const response = await axios.post(url, data, {
+    httpsAgent: agent,
+    timeout: 5000, // 5 seconds
+  });
+  if (
+    response.status !== 200 ||
+    response.statusText !== 'OK' ||
+    !(response.headers['content-type'] as string).startsWith('application/json')
+  ) {
+    throw new Error('Malformed response');
+  }
+  return response.data;
+}
 
 async function getProducers(): Promise<ProducerInfo[]> {
   for (let i = 0; i < BP_SEEDS.length; i += 1) {
     try {
-      const rpc = new JsonRpc(BP_SEEDS[i], { fetch: fetch as any });
       // eslint-disable-next-line no-await-in-loop
-      const response = await rpc.get_producers(true);
-      const producers = (response.rows as ProducerInfo[]).filter(p => p.is_active);
+      const data = await post(`${BP_SEEDS[i]}/v1/chain/get_producers`, {
+        json: true,
+        lower_bound: '',
+        limit: 50,
+      });
+      const producers = (data.rows as ProducerInfo[]).filter(p => p.is_active);
       return producers;
     } catch (e) {
+      // console.error(BP_SEEDS[i]);
       // console.error(e);
     }
   }
@@ -127,18 +139,20 @@ async function check(url: string): Promise<number> {
   try {
     const startTime = Date.now();
 
-    const rpc = new JsonRpc(url, { fetch: fetch as any });
-    const response = await rpc.get_info();
+    const response = await post(`${url}/v1/chain/get_info`, {});
     if (response.chain_id !== EOS_CHAIN_ID) return 0;
 
-    const balanceInfo = (await rpc.get_currency_balance(
-      'eidosonecoin',
-      'cryptoforest',
-      'EIDOS',
-    )) as string[];
+    const balanceInfo = (await post(`${url}/v1/chain/get_currency_balance`, {
+      code: 'eidosonecoin',
+      account: 'cryptoforest',
+      symbol: 'EIDOS',
+    })) as string[];
     if (balanceInfo.length < 1) return 0;
 
-    const transaction = await rpc.history_get_transaction(TEST_TRANSACTION_ID, BLOCK_NUM);
+    const transaction = await post(`${url}/v1/history/get_transaction`, {
+      id: TEST_TRANSACTION_ID,
+      block_num_hint: BLOCK_NUM,
+    });
     const endTime = Date.now();
     const latency = Math.round((endTime - startTime) / 3);
     return transaction.id || transaction.transaction_id ? latency : 0;

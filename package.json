@@ -1,6 +1,6 @@
 {
   "name": "eos-endpoint",
-  "version": "1.0.3",
+  "version": "2.0.0",
   "description": "Retrieve a list of valid EOS API endpoints.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -33,8 +33,6 @@
   "homepage": "https://github.com/soulmachine/eos-endpoint#readme",
   "devDependencies": {
     "@types/node": "^12.12.7",
-    "@types/node-fetch": "^2.5.4",
-    "@types/text-encoding": "0.0.35",
     "@typescript-eslint/eslint-plugin": "^2.7.0",
     "@typescript-eslint/parser": "^2.7.0",
     "eslint": "^6.6.0",
@@ -48,8 +46,6 @@
     "typescript": "^3.7.2"
   },
   "dependencies": {
-    "axios": "^0.19.0",
-    "eosjs": "^20.0.0",
-    "node-fetch": "^2.6.0"
+    "axios": "^0.19.0"
   }
 }
