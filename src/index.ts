@@ -43,19 +43,23 @@ const TEST_TRANSACTION_ID = '596e905f4af9e212aa4683fa209bfb32d1339e869a16b9c0687
 const BLOCK_NUM = 91463041;
 
 const BP_SEEDS = [
+  'http://eos.infstones.io',
   'https://eos.infstones.io',
+  'http://eos.eoscafeblock.com',
   'https://eos.eoscafeblock.com',
-  'http://peer1.eoshuobipool.com:8181',
   'https://node.betdice.one',
-  'https://api.redpacketeos.com',
-  'https://eos.infstones.io',
-  'https://api-mainnet.starteos.io',
-  'https://mainnet.eoscannon.io',
-  'https://api.main.alohaeos.com',
+  'http://api.main.alohaeos.com',
+  'http://api-mainnet.starteos.io',
   'https://bp.whaleex.com',
   'https://api.zbeos.com',
-  'https://api.eosrio.io',
+  'https://node1.zbeos.com',
+  'https://api.main.alohaeos.com',
   'https://api.eoslaomao.com',
+  'https://api-mainnet.starteos.io',
+  'http://peer2.eoshuobipool.com:8181',
+  'http://peer1.eoshuobipool.com:8181',
+  'https://api.redpacketeos.com',
+  'https://mainnet.eoscannon.io',
 ];
 
 async function post(url: string, data: { [key: string]: any }): Promise<any> {
